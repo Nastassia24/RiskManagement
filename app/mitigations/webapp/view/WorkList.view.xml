@@ -1,0 +1,29 @@
+<mvc:View controllerName="mitigations.mitigations.controller.WorkList"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        <Table id="mitigationsList" items="{/Mitigations}">
+            <columns>
+                <Column>
+                    <Text text="Name"/>
+                </Column>
+                <Column>
+                    <Text text="Owner owner"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text 
+                            text="{descr}" />
+                        <Text
+                            text="{owner}" />
+                    </cells>
+                </ColumnListItem>
+		    </items>
+        </Table>
+        
+        </content>
+    </Page>
+</mvc:View>
