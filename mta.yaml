@@ -1,7 +1,6 @@
 _schema-version: "3.1"
 ID: risk-management
-description: Template for the Learning Journey Building side-by-side extensions on
-  SAP BTP
+description: Template for the Learning Journey Building side-by-side extensions on SAP BTP
 version: 3.0.0
 modules:
 - name: risk-management-srv
@@ -84,4 +83,5 @@ build-parameters:
   before-all:
   - builder: custom
     commands:
+    - npm ci
     - npx cds build --production
