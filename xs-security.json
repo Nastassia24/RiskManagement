@@ -38,7 +38,9 @@
       "https://**.applicationstudio.cloud.sap/login/callback",
       "https://************-risk-management.cfapps.us10-001.hana.ondemand.com",
       "https://*.cfapps.us10-001.hana.ondemand.com/**",
-      "*"
+      "*",
+      "https://f17611e0trial.authentication.us10.hana.ondemand.com/oauth/*",
+      "https://*.hana.ondemand.com/**"
     ]
   }
 }
