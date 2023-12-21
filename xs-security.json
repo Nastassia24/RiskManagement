@@ -30,5 +30,11 @@
       "attribute-references": []
     }
   ],
-  "attributes": []
+  "attributes": [],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://**.hana.ondemand.com/login/callback",
+      "https://**.int.applicationstudio.cloud.sap/login/callback"
+    ]
+  }
 }
