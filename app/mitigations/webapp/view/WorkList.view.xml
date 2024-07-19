@@ -4,20 +4,26 @@
     <Page id="page" title="{i18n>title}">
         <content>
         <Table id="mitigationsList" items="{/Mitigations}">
+            <headerToolbar>
+                <Toolbar id="toolbar">
+                    <ToolbarSpacer id="toolbarSpc"/>
+                    <Button id="button" text="{ i18n>buttonText }" press="onButtonPress"></Button>
+                </Toolbar>
+            </headerToolbar>
             <columns>
-                <Column>
-                    <Text text="Name"/>
+                <Column id="clmn1">
+                    <Text id="txt1" text="Name"/>
                 </Column>
-                <Column>
-                    <Text text="Owner owner"/>
+                <Column id="clmn2">
+                    <Text id="txt2" text="Owner owner"/>
                 </Column>
             </columns>
             <items>
-                <ColumnListItem vAlign="Middle">
+                <ColumnListItem id="listItem" vAlign="Middle">
                     <cells>
-                        <Text 
+                        <Text id="txt3"
                             text="{descr}" />
-                        <Text
+                        <Text id="txt4"
                             text="{owner}" />
                     </cells>
                 </ColumnListItem>

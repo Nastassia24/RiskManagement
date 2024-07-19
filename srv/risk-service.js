@@ -41,18 +41,26 @@ module.exports = cds.service.impl(async function () {
     })
 
     const BPsrv = await cds.connect.to("API_BUSINESS_PARTNER");
+    const CCsrv = await cds.connect.to("API_CLOUD_CONNECTOR");
 
     this.on("READ", BusinessPartners, async (req) => {
         // The API Sandbox returns alot of business partners with empty names.
         // We don't want them in our application
         req.query.where("LastName <> '' and FirstName <> '' ");
-
+    
+        
         return await BPsrv.transaction(req).send({
-            query: req.query,
-            headers: {
-                apikey: process.env.apikey,
-            }
+            query: req.query
         });
+    });
+
+    this.on("MyApi", async (req, next) => {
+        try {
+            const text = await CCsrv.get("/");
+            console.log(text.text);
+        } catch (err) {
+        }
+        
     });
 
 
@@ -89,10 +97,7 @@ module.exports = cds.service.impl(async function () {
         // Request all associated BusinessPartners
         const bpIDs = asArray(risks).map(risk => risk.bp_BusinessPartner);
         const busienssPartners = await BPsrv.transaction(req).send({
-            query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs }),
-            headers: {
-                apikey: process.env.apikey,
-            }
+            query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs })
         });
 
         // Convert in a map for easier lookup

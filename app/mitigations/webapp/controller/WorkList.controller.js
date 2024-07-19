@@ -10,6 +10,14 @@ sap.ui.define([
         return Controller.extend("mitigations.mitigations.controller.WorkList", {
             onInit: function () {
 
+            },
+
+            onButtonPress () {
+                this.getModel().callFunction("MyApi", {
+                    success: (oData) => {
+                        debugger
+                    }
+                })
             }
         });
     });

@@ -20,6 +20,8 @@
   },
   "scripts": {
     "start": "cds-serve",
+    "start-hybrid": "cds watch --profile hybrid",
+    "start-app-router": "cds bind --exec -- npm start --prefix app",
     "watch-risk-management": "cds watch --open risk-management/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-mitigations": "cds watch --open mitigations/webapp/index.html?sap-ui-xx-viewCache=false"
   },
@@ -32,10 +34,19 @@
           "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/"
         }
       },
+      "API_CLOUD_CONNECTOR": {
+        "kind": "odata",
+        "credentials": {
+          "destination": "localAPI"
+        }
+
+      },
       "[production]": {
         "db": "hana",
-        "auth": "xsuaa"
-      }
+        "auth": "xsuaa",
+        "connectivity": true
+      },
+      "auth": "xsuaa"
     }
   },
   "sapux": [

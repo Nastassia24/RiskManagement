@@ -120,7 +120,19 @@
                                     }
                                 }
                             },
-                            "initialLoad": "Enabled"
+                            "initialLoad": "Enabled",
+                            "content": {
+                                "header": {
+                                    "actions": {
+                                        "triggerCcApi": {
+                                            "press": ".extension.riskmanagement.ext.controller.RisksList.triggerCloudConnecterAPI",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "text": "Trigger Cloud Connecter API"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -133,6 +145,16 @@
                             "editableHeaderContent": false,
                             "entitySet": "Risks"
                         }
+                    }
+                }
+            },
+            "config": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.fe.templates.ListReport.ListReportController#riskmanagement::RisksList": {
+                        "controllerName": "riskmanagement.ext.controller.RisksList"
                     }
                 }
             }

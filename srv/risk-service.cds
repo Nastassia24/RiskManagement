@@ -2,7 +2,7 @@
 using {riskmanagement as rm} from '../db/schema';
 
 @path: 'service/risk'
-service RiskService @(requires: 'authenticated-user') {
+service RiskService {
     entity Risks @(restrict: [
         {
             grant: 'READ',
@@ -34,6 +34,8 @@ service RiskService @(requires: 'authenticated-user') {
     ])                      as projection on rm.Mitigations;
 
     annotate Mitigations with @odata.draft.enabled;
+
+    function MyApi() returns String;
 
     // BusinessPartner
     @readonly
