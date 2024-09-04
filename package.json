@@ -45,8 +45,7 @@
         "db": "hana",
         "auth": "xsuaa",
         "connectivity": true
-      },
-      "auth": "xsuaa"
+      }
     }
   },
   "sapux": [

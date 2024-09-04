@@ -50,7 +50,10 @@ module.exports = cds.service.impl(async function () {
     
         
         return await BPsrv.transaction(req).send({
-            query: req.query
+            query: req.query,
+            headers: {
+                apikey: process.env.apikey,
+            }
         });
     });
 
@@ -97,7 +100,10 @@ module.exports = cds.service.impl(async function () {
         // Request all associated BusinessPartners
         const bpIDs = asArray(risks).map(risk => risk.bp_BusinessPartner);
         const busienssPartners = await BPsrv.transaction(req).send({
-            query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs })
+            query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs }),
+            headers: {
+                apikey: process.env.apikey
+            }
         });
 
         // Convert in a map for easier lookup
