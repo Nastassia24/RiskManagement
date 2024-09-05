@@ -98,23 +98,23 @@ module.exports = cds.service.impl(async function () {
         const asArray = x => Array.isArray(x) ? x : [x];
 
         // Request all associated BusinessPartners
-        const bpIDs = asArray(risks).map(risk => risk.bp_BusinessPartner);
-        const busienssPartners = await BPsrv.transaction(req).send({
-            query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs }),
-            headers: {
-                apikey: process.env.apikey
-            }
-        });
+        // const bpIDs = asArray(risks).map(risk => risk.bp_BusinessPartner);
+        // const busienssPartners = await BPsrv.transaction(req).send({
+        //     query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs }),
+        //     headers: {
+        //         apikey: process.env.apikey
+        //     }
+        // });
 
-        // Convert in a map for easier lookup
-        const bpMap = {};
-        for (const businessPartner of busienssPartners)
-            bpMap[businessPartner.BusinessPartner] = businessPartner;
+        // // Convert in a map for easier lookup
+        // const bpMap = {};
+        // for (const businessPartner of busienssPartners)
+        //     bpMap[businessPartner.BusinessPartner] = businessPartner;
 
-        // Add BusinessPartners to result
-        for (const note of asArray(risks)) {
-            note.bp = bpMap[note.bp_BusinessPartner];
-        }
+        // // Add BusinessPartners to result
+        // for (const note of asArray(risks)) {
+        //     note.bp = bpMap[note.bp_BusinessPartner];
+        // }
 
         return risks;
     });

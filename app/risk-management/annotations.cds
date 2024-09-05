@@ -137,16 +137,6 @@ annotate service.Risks with @(
                 Value : descr,
                 Label : '{i18n>Description}',
             },{
-                $Type : 'UI.DataField',
-                Value : prio_code,
-                Criticality : PrioCriticality,
-            },{
-                $Type : 'UI.DataField',
-                Value : impact,
-                Label : '{i18n>Impact}',
-                Criticality : criticality,
-            },
-            {
                 $Type : 'UI.DataFieldForAnnotation',
                 Target : 'bp/@Communication.Contact#contact4',
                 Label : '{i18n>BusinessPartner}',
