@@ -4,8 +4,8 @@ module.exports = cds.service.impl(async function () {
 
     const { Risks, BusinessPartners, Mitigations } = this.entities;
 
-    this.before("READ", Risks, (req) => {
-        
+    this.before("CREATE", this.entities.Risks.Items, async (req) => {
+        req.data.pos = Math.floor(Math.random() * 1000000);
     });
     
     this.after("READ", Risks, async (data) => {
@@ -57,7 +57,7 @@ module.exports = cds.service.impl(async function () {
         });
     });
 
-    this.on("MyApi", async (req, next) => {
+    this.on("MyApi", async (req) => {
         try {
             const text = await CCsrv.get("/");
             console.log(text.text);
@@ -66,6 +66,28 @@ module.exports = cds.service.impl(async function () {
         
     });
 
+    this.on("GetItemsWithQuantity", async (req) => {
+        try {
+            const items = await SELECT.from `riskmanagement.Items` .where ({ quantity: req.data.quantity });
+
+            return {items};
+        } catch (err) {
+            return req.error();
+        }
+    });
+
+    this.on("CreateItem", async (req) => {
+        try {
+            debugger
+            const {quantity, title, descr} = req.data,
+                item = { quantity, title, descr };
+             
+            INSERT (item) .into `riskmanagement.Items`
+            return {item};
+        } catch (err) {
+            return req.error();
+        }
+    });
 
     // Risks?$expand=bp (Expand on BusinessPartner)
     this.on("READ", Risks, async (req, next) => {

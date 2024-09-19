@@ -15,6 +15,10 @@ entity Risks : cuid, managed {
         miti                     : Association to Mitigations;
         impact                   : Integer;
         bp : Association to BusinessPartners;
+        Items : Composition of many {
+                key pos  : Integer;
+                text : String;
+        };
         virtual criticality      : Integer;
         virtual PrioCriticality : Integer;
 }
@@ -25,6 +29,12 @@ entity Mitigations : cuid, managed {
         timeline : String;
         risks    : Association to many Risks
                            on risks.miti = $self;
+}
+
+entity Items : cuid {
+        descr    : String;
+        title    : String;
+        quantity : String;
 }
 
 entity Priority : CodeList {

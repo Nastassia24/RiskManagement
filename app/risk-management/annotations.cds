@@ -1,4 +1,6 @@
 using RiskService as service from '../../srv/risk-service';
+using from '../../db/schema';
+
 
 annotate service.Risks with @(
     UI.LineItem : [
@@ -95,6 +97,12 @@ annotate service.Risks with @(
                     ID : 'MitigationDetails',
                     Target : '@UI.FieldGroup#MitigationDetails',
                 },],
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'ChangeLog',
+            ID : 'ChangeLog',
+            Target : 'Items/@UI.LineItem#ChangeLog',
         },]
 );
 annotate service.Risks with @(
@@ -237,3 +245,18 @@ annotate service.BusinessPartners with @(
         fn : FullName,
     }
 );
+annotate service.Risks.Items with @(
+    UI.LineItem #ChangeLog : [
+        {
+            $Type : 'UI.DataField',
+            Value : pos,
+            Label : 'pos',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : text,
+            Label : 'text',
+        },
+    ]
+);
+

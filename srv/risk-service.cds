@@ -36,6 +36,10 @@ service RiskService {
     annotate Mitigations with @odata.draft.enabled;
 
     function MyApi() returns String;
+    function GetItemsWithQuantity(quantity:Integer) returns {
+        items: Integer
+    };
+    action CreateItem(quantity:Integer,title:String,descr:String);
 
     // BusinessPartner
     @readonly
