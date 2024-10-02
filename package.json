@@ -37,9 +37,8 @@
       "API_CLOUD_CONNECTOR": {
         "kind": "odata",
         "credentials": {
-          "destination": "localAPI"
+          "destination": "cloud-connector"
         }
-
       },
       "[production]": {
         "db": "hana",

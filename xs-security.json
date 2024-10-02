@@ -35,6 +35,7 @@
     "redirect-uris": [
       "https://f17611e0trial-dev-risk-management.cfapps.us10-001.hana.ondemand.com/login/callback",
       "https://port5000-workspaces-ws-545cx.us10.trial.applicationstudio.cloud.sap/login/callback",
+      "https://port4004-workspaces-ws-jnpjq.us10.trial.applicationstudio.cloud.sap/login/callback",
       "https://**.hana.ondemand.com/login/callback",
       "https://**.applicationstudio.cloud.sap/login/callback",
       "https://************-risk-management.cfapps.us10-001.hana.ondemand.com",

@@ -60,8 +60,9 @@ module.exports = cds.service.impl(async function () {
     this.on("MyApi", async (req) => {
         try {
             const text = await CCsrv.get("/");
-            console.log(text.text);
+            return text;
         } catch (err) {
+            console.log(err);
         }
         
     });
